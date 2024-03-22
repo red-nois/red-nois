@@ -30,10 +30,10 @@ def start():
     }
 
     val_dataset = Dataset(clean_val_filenames, noisy_val_filenames, **settings)
-    val_dataset.create_tf_records(prefix="val", subset_size=2000)
+    val_dataset.create_tf_records(prefix="data/val", subset_size=2000)
 
     train_dataset = Dataset(clean_train_filenames, noisy_train_filenames, **settings)
-    train_dataset.create_tf_records(prefix="train", subset_size=4000)
+    train_dataset.create_tf_records(prefix="data/train", subset_size=4000)
 
     # Create Test Dataset
     clean_test_filenames = mozilla_dataset.get_test_filenames()
@@ -41,7 +41,7 @@ def start():
     noisy_test_filenames = us8k_dataset.get_test_filenames()
 
     test_dataset = Dataset(clean_test_filenames, noisy_test_filenames, **settings)
-    test_dataset.create_tf_records(prefix="test", subset_size=1000, parallel=False)
+    test_dataset.create_tf_records(prefix="data/test", subset_size=1000, parallel=False)
 
 
 if __name__ == "__main__":
