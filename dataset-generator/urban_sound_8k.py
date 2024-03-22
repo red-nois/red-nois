@@ -43,7 +43,7 @@ class UrbanSound8K:
         assert len(all_files) == file_counter
         return all_files
 
-    def get_train_val_filenames(self):
+    def get_train_val_files(self):
         urbansound_metadata = self._get_urban_sound_8k_files()
 
         # Using folders 0-9
