@@ -8,8 +8,8 @@ import multiprocessing
 def start():
     warnings.filterwarnings(action="ignore")
 
-    mozilla_root = "D:\\PROJECT\\en"
-    urbansound_root = "D:\\PROJECT\\UrbanSound8K\\UrbanSound8K"
+    mozilla_root = "data/mozilla"
+    urbansound_root = "data/urbansound"
 
     mozilla_dataset = MozillaVoiceDataset(mozilla_root, val_dataset_size=1000)
     (
