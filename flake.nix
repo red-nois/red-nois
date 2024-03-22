@@ -8,6 +8,7 @@
       buildInputs = with pkgs; [
         python3
         portaudio
+        python3Packages.python-lsp-server
       ];
       LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath (with pkgs; [ portaudio stdenv.cc.cc.lib zlib ]);
     };
