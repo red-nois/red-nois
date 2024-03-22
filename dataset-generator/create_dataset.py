@@ -36,9 +36,9 @@ def start():
     train_dataset.create_tf_records(prefix="data/train", subset_size=4000)
 
     # Create Test Dataset
-    clean_test_filenames = mozilla_dataset.get_test_filenames()
+    clean_test_filenames = mozilla_dataset.get_test_files()
 
-    noisy_test_filenames = us8k_dataset.get_test_filenames()
+    noisy_test_filenames = us8k_dataset.get_test_files()
 
     test_dataset = Dataset(clean_test_filenames, noisy_test_filenames, **settings)
     test_dataset.create_tf_records(prefix="data/test", subset_size=1000, parallel=False)

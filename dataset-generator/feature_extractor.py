@@ -15,7 +15,7 @@ class FeatureExtractor:
         return librosa.stft(
             self.audio,
             n_fft=self.fft_length,
-            win_length=self.window_size,
+            win_size=self.window_size,
             hop_length=self.overlap,
             window=self.window,
             center=True,
@@ -24,7 +24,7 @@ class FeatureExtractor:
     def get_audio_from_stft_spectrogram(self, stft_features):
         return librosa.istft(
             stft_features,
-            win_length=self.window_size,
+            win_size=self.window_size,
             hop_length=self.overlap,
             window=self.window,
             center=True,
@@ -47,7 +47,7 @@ class FeatureExtractor:
             sr=self.sampling_rate,
             n_fft=self.fft_length,
             hop_length=self.overlap,
-            win_length=self.window_size,
+            win_size=self.window_size,
             window=self.window,
             center=True,
             pad_mode="reflect",

@@ -19,7 +19,7 @@ class Dataset:
         self.noisy_file_paths = noisy_file_paths
         self.sample_rate = config["sample_rate"]
         self.overlap = config["overlap"]
-        self.window_length = config["window_length"]
+        self.window_size = config["window_size"]
         self.max_audio_length = config["max_audio_length"]
 
     def _random_noisy_file_path(self):
@@ -68,7 +68,10 @@ class Dataset:
         return noisy_audio
 
     def process_audio_in_parallel(self, clean_file_path):
-        clean_audio, _ = read_audio(clean_file_path, self.sample_rate)
+        try:
+            clean_audio, _ = read_audio(clean_file_path, self.sample_rate)
+        except:
+            return
 
         clean_audio = self._remove_silent_frames(clean_audio)
 
@@ -86,7 +89,7 @@ class Dataset:
 
         noisy_input_features = FeatureExtractor(
             noisy_input,
-            window_length=self.window_length,
+            window_size=self.window_size,
             overlap=self.overlap,
             sample_rate=self.sample_rate,
         )
@@ -98,7 +101,7 @@ class Dataset:
 
         clean_input_features = FeatureExtractor(
             clean_audio,
-            window_length=self.window_length,
+            window_size=self.window_size,
             overlap=self.overlap,
             sample_rate=self.sample_rate,
         )
@@ -146,6 +149,9 @@ class Dataset:
                 ]
 
             for output in outputs:
+                if output is None:
+                    continue
+
                 noisy_stft_magnitude = output[0]
                 clean_stft_magnitude = output[1]
                 noisy_stft_phase = output[2]

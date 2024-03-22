@@ -8,12 +8,12 @@ from pathlib import Path
 """Performs Inverse Short-Time Fourier Transform"""
 
 
-def inverse_stft_transform(stft_features, window_length, overlap):
-    return librosa.istft(stft_features, win_length=window_length, hop_length=overlap)
+def inverse_stft_transform(stft_features, window_size, overlap):
+    return librosa.istft(stft_features, win_size=window_size, hop_length=overlap)
 
 
 def features_to_audio(
-    features, phase, window_length, overlap, clean_mean=None, clean_std=None
+    features, phase, window_size, overlap, clean_mean=None, clean_std=None
 ):
     # Rescale the output back to original range
     if clean_mean and clean_std:
@@ -26,7 +26,7 @@ def features_to_audio(
 
     features = np.transpose(features, (1, 0))
     return inverse_stft_transform(
-        features, window_length=window_length, overlap=overlap
+        features, window_size=window_size, overlap=overlap
     )
 
 

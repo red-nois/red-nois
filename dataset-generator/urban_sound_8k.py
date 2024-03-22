@@ -60,7 +60,7 @@ class UrbanSound8K:
 
         return urbansound_train, urbansound_val
 
-    def get_test_filenames(self):
+    def get_test_files(self):
         urbansound_metadata = self._get_urban_sound_8k_files()
 
         # Folder 10 will be used for testing only
