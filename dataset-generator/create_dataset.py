@@ -16,7 +16,7 @@ def start():
         clean_train_filenames,
         clean_val_filenames,
     ) = mozilla_dataset.get_train_val_files()
-    print(clean_train_filenames)
+    # print(clean_train_filenames)
 
     us8k_dataset = UrbanSound8K(urbansound_root, val_dataset_size=200)
     noisy_train_filenames, noisy_val_filenames = us8k_dataset.get_train_val_files()

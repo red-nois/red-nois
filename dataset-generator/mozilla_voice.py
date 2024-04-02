@@ -12,7 +12,7 @@ class MozillaVoiceDataset:
 
     def get_mozilla_voice_files(self, dataframe_name="train.tsv"):
         mozilla_metadata = pd.read_csv(
-            os.path.join(self.base_path, dataframe_name), sep="\t"
+            os.path.join(self.base_path, "data-file", dataframe_name), sep="\t"
         )
         clean_files = mozilla_metadata["path"].values
         np.random.shuffle(clean_files)
@@ -23,7 +23,7 @@ class MozillaVoiceDataset:
         clean_files = self.get_mozilla_voice_files(dataframe_name="train.tsv")
 
         clean_files = [
-            os.path.join(self.base_path, "clips", filename) for filename in clean_files
+            os.path.join(self.base_path, "new-clip", filename) for filename in clean_files
         ]
 
         clean_files = clean_files[: -self.val_dataset_size]
