@@ -13,7 +13,7 @@ class UrbanSound8K:
 
     def _get_urban_sound_8k_files(self):
         urbansound_metadata = pd.read_csv(
-            os.path.join(self.base_path, "metadata", "UrbanSound8K.csv")
+            os.path.join(self.base_path, "UrbanSound8K.csv")
         )
 
         # shuffle
