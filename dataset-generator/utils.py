@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 def inverse_stft_transform(stft_features, window_size, overlap):
-    return librosa.istft(stft_features, win_size=window_size, hop_length=overlap)
+    return librosa.istft(stft_features, win_length=window_size, hop_length=overlap)
 
 
 def features_to_audio(
