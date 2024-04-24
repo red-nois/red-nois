@@ -33,7 +33,7 @@ class UrbanSound8K:
                 ["slice_file_name", "fold"]
             ].values
             class_files = [
-                os.path.join(self.base_path, "audio", "fold" + str(file[1]), file[0])
+                os.path.join(self.base_path, "fold" + str(file[1]), file[0])
                 for file in class_files
             ]
             print("There are", len(class_files), "files in class", str(c))
