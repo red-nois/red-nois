@@ -43,7 +43,7 @@ class Dataset:
         return read_audio(file_path, self.sample_rate)
 
     def _randomly_crop_audio(self, audio, duration):
-        audio_duration_seconds = librosa.core.get_duration(audio, self.sample_rate)
+        audio_duration_seconds = librosa.core.get_duration(y=audio, sr=self.sample_rate)
 
         if duration >= audio_duration_seconds:
             return audio
