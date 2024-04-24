@@ -3,12 +3,12 @@ import numpy as np
 
 
 class FeatureExtractor:
-    def __init__(self, audio, *, window_size, overlap, sampling_rate):
+    def __init__(self, audio, *, window_size, overlap, sample_rate):
         self.audio = audio
         self.fft_length = window_size
         self.window_size = window_size
         self.overlap = overlap
-        self.sampling_rate = sampling_rate
+        self.sample_rate = sample_rate
         self.window = np.hamming(self.window_size)
 
     def get_stft_spectrogram(self):
@@ -33,7 +33,7 @@ class FeatureExtractor:
     def get_mel_spectrogram(self):
         return librosa.feature.melspectrogram(
             self.audio,
-            sr=self.sampling_rate,
+            sr=self.sample_rate,
             power=2.0,
             pad_mode="reflect",
             n_fft=self.fft_length,
@@ -44,7 +44,7 @@ class FeatureExtractor:
     def get_audio_from_mel_spectrogram(self, M):
         return librosa.feature.inverse.mel_to_audio(
             M,
-            sr=self.sampling_rate,
+            sr=self.sample_rate,
             n_fft=self.fft_length,
             hop_length=self.overlap,
             win_size=self.window_size,

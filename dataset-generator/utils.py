@@ -30,9 +30,9 @@ def features_to_audio(
     )
 
 
-def play_audio(audio, sampling_rate):
-    # ipd.display(ipd.Audio(data=audio, rate=sampling_rate))  # For wav file
-    sd.play(audio, sampling_rate, blocking=True)
+def play_audio(audio, sample_rate):
+    # ipd.display(ipd.Audio(data=audio, rate=sample_rate))  # For wav file
+    sd.play(audio, sample_rate, blocking=True)
 
 
 def add_noise_to_clean_audio(clean_audio, noise_signal):
@@ -52,8 +52,8 @@ def add_noise_to_clean_audio(clean_audio, noise_signal):
     return noisy_audio
 
 
-def read_audio(file_path, sampling_rate, normalize=True):
-    audio, sr = librosa.load(str(Path(file_path)), sr=sampling_rate)
+def read_audio(file_path, sample_rate, normalize=True):
+    audio, sr = librosa.load(str(Path(file_path)), sr=sample_rate)
     if normalize is True:
         div_fac = 1 / np.max(np.abs(audio)) / 3.0
         audio = audio * div_fac
